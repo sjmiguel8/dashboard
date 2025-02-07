@@ -2,14 +2,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/ta
 import { File, PlusCircle } from 'lucide-react';
 import { Button } from '../../components/ui/button.tsx';
 import { ProductsTable } from './products-table.tsx';
-import { getProducts } from '../../lib/utils.ts';
+import { getProducts } from '../../lib/db.ts';
 
-export default async function ProductsPage(
-  props: {
-    searchParams: Promise<{ q: string; offset: string }>;
-  }
-) {
-  const searchParams = await props.searchParams;
+export default async function ProductsPage({
+  searchParams
+}: {
+  searchParams: { q?: string; offset?: string };
+}) {
   const search = searchParams.q ?? '';
   const offset = searchParams.offset ?? 0;
   const { products, newOffset, totalProducts } = await getProducts(

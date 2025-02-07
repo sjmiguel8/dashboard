@@ -17,20 +17,20 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator
-} from '@/components/ui/breadcrumb';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+} from '@/components/ui/breadcrumb.tsx';
+import { Button } from '@/components/ui/button.tsx';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet.tsx';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
-} from '@/components/ui/tooltip';
+} from '@/components/ui/tooltip.tsx';
 import { Analytics } from '@vercel/analytics/react';
-import { User } from './user';
-import { VercelLogo } from '@/components/icons';
-import Providers from './providers';
-import { NavItem } from './nav-item';
-import { SearchInput } from './search';
+import { User } from './user.tsx';
+import { VercelLogo } from '@/components/icons.tsx';
+import Providers from './providers.tsx';
+import { NavItem } from './nav-item.tsx';
+import { SearchInput } from './search.tsx';
 
 export default function DashboardLayout({
   children
@@ -70,15 +70,15 @@ function DesktopNav() {
           <span className="sr-only">Acme Inc</span>
         </Link>
 
-        <NavItem href="#" label="Dashboard">
+        <NavItem href="/dashboard" label="Dashboard">
           <Home className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="#" label="Orders">
+        <NavItem href="/orders" label="Orders">
           <ShoppingCart className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/" label="Products">
+        <NavItem href="/products" label="Products">
           <Package className="h-5 w-5" />
         </NavItem>
 
@@ -86,7 +86,7 @@ function DesktopNav() {
           <Users2 className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="#" label="Analytics">
+        <NavItem href="/analytics" label="Analytics">
           <LineChart className="h-5 w-5" />
         </NavItem>
       </nav>
@@ -94,7 +94,7 @@ function DesktopNav() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href="#"
+              href="/settings"
               className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
             >
               <Settings className="h-5 w-5" />
@@ -120,46 +120,46 @@ function MobileNav() {
       <SheetContent side="left" className="sm:max-w-xs">
         <nav className="grid gap-6 text-lg font-medium">
           <Link
-            href="#"
+            href="/"
             className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
           >
             <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
             <span className="sr-only">Vercel</span>
           </Link>
           <Link
-            href="#"
+            href="/dashboard"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Home className="h-5 w-5" />
             Dashboard
           </Link>
           <Link
-            href="#"
+            href="/orders"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <ShoppingCart className="h-5 w-5" />
             Orders
           </Link>
           <Link
-            href="#"
+            href="/products"
             className="flex items-center gap-4 px-2.5 text-foreground"
           >
             <Package className="h-5 w-5" />
             Products
           </Link>
           <Link
-            href="#"
+            href="/customers"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Users2 className="h-5 w-5" />
             Customers
           </Link>
           <Link
-            href="#"
+            href="/analytics"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <LineChart className="h-5 w-5" />
-            Settings
+            Analytics
           </Link>
         </nav>
       </SheetContent>
@@ -173,13 +173,13 @@ function DashboardBreadcrumb() {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="#">Dashboard</Link>
+            <Link href="/dashboard">Dashboard</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="#">Products</Link>
+            <Link href="/products">Products</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
