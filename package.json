@@ -43,5 +43,9 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "none"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "ts-loader": "^9.5.2"
   }
 }

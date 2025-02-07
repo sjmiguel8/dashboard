@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { auth, signOut } from '@/lib/auth';
-import Image from 'next/image';
+'use client';
+
+import { Button } from '../ui/button.tsx';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,12 +8,24 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import Link from 'next/link';
+} from '../ui/dropdown-menu.tsx';
 
-export async function User() {
-  let session = await auth();
-  let user = session?.user;
+type UserProps = {
+  user?: {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
+  } | null;
+};
+
+export function User({ user }: UserProps) {
+  const handleSignOut = async (event: React.FormEvent) => {
+    event.preventDefault();
+    const response = await fetch('/api/auth/signout', { method: 'POST' });
+    if (response.ok) {
+      window.location.href = '/login';
+    }
+  };
 
   return (
     <DropdownMenu>
@@ -23,7 +35,7 @@ export async function User() {
           size="icon"
           className="overflow-hidden rounded-full"
         >
-          <Image
+          <img
             src={user?.image ?? '/placeholder-user.jpg'}
             width={36}
             height={36}
@@ -35,23 +47,17 @@ export async function User() {
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        {user ? (
-          <DropdownMenuItem>
-            <form
-              action={async () => {
-                'use server';
-                await signOut();
-              }}
-            >
-              <button type="submit">Sign Out</button>
-            </form>
-          </DropdownMenuItem>
-        ) : (
-          <DropdownMenuItem>
-            <Link href="/login">Sign In</Link>
+        <DropdownMenuItem asChild>
+          <a href="/settings">Settings</a>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <form onSubmit={handleSignOut} className="w-full">
+            <button type="submit" className="w-full text-left">Sign Out</button>
+          </form>
+        </DropdownMenuItem>
+        {!user && (
+          <DropdownMenuItem asChild>
+            <a href="/login">Sign In</a>
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>

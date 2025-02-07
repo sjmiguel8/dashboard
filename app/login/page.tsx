@@ -1,12 +1,12 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '../../components/ui/button.tsx';
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/components/ui/card';
-import { signIn } from '@/lib/auth';
+} from '@/components/ui/card.tsx';
+import { signIn } from '@/lib/auth.ts';
 
 export default function LoginPage() {
   return (

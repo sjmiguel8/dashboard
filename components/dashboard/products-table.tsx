@@ -6,7 +6,7 @@ import {
   TableHead,
   TableRow,
   TableCell
-} from '../../components/ui/table.tsx';
+} from '../ui/table.tsx';
 
 export function ProductsTable({
   products,
