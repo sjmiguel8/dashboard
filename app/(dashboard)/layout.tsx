@@ -14,8 +14,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
 } from '@/components/ui/breadcrumb.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet.tsx';
@@ -25,7 +23,7 @@ import {
   TooltipTrigger
 } from '@/components/ui/tooltip.tsx';
 import { Analytics } from '@vercel/analytics/react';
-import { User } from '@/components/dashboard/user.tsx';
+import { AuthUser } from '@/components/dashboard/auth-user.tsx';
 import { VercelLogo } from '@/components/icons.tsx';
 import Providers from '@/components/dashboard/providers.tsx';
 import { NavItem } from '@/components/dashboard/nav-item.tsx';
@@ -45,7 +43,7 @@ export default function DashboardLayout({
             <MobileNav />
             <DashboardBreadcrumb />
             <SearchInput />
-            <User />
+            <AuthUser />
           </header>
           <main className="grid flex-1 items-start gap-2 p-4 sm:px-6 sm:py-0 md:gap-4 bg-muted/40">
             {children}
