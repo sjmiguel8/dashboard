@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card.tsx";
+import React from "react";
 
 export default function AnalyticsPage() {
   const stats = [

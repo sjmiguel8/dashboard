@@ -1,3 +1,4 @@
+import React from "react";
 import { ProductsTable } from "../products-table.tsx";
 import { getProducts } from "@/lib/db.ts";
 

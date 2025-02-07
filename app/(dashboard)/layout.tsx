@@ -26,11 +26,11 @@ import {
   TooltipTrigger
 } from '@/components/ui/tooltip.tsx';
 import { Analytics } from '@vercel/analytics/react';
-import { User } from './user.tsx';
+import { User } from '../../components/dashboard/user.tsx';
 import { VercelLogo } from '@/components/icons.tsx';
-import Providers from './providers.tsx';
-import { NavItem } from './nav-item.tsx';
-import { SearchInput } from './search.tsx';
+import Providers from '../../components/dashboard/providers.tsx';
+import { NavItem } from '../../components/dashboard/nav-item.tsx';
+import { SearchInput } from '../../components/dashboard/search.tsx';
 
 export default function DashboardLayout({
   children
@@ -175,16 +175,6 @@ function DashboardBreadcrumb() {
           <BreadcrumbLink asChild>
             <Link href="/dashboard">Dashboard</Link>
           </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="/products">Products</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>All Products</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

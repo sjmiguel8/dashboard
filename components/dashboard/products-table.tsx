@@ -7,7 +7,6 @@ import {
   TableRow,
   TableCell
 } from '../../components/ui/table.tsx';
-import React from 'react';
 
 export function ProductsTable({
   products,

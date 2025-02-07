@@ -1,3 +1,4 @@
+import React from "react";
 import { OrdersTable } from "../orders-table.tsx";
 
 export default function OrdersPage() {
