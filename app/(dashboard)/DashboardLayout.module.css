@@ -6,6 +6,13 @@
   background-color: var(--bg-muted-40);
 }
 
+.headerText {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-foreground);
+  margin-left: 1rem;
+}
+
 .desktopNav {
   position: fixed;
   top: 0;
@@ -17,6 +24,7 @@
   flex-direction: column;
   border-right: 1px solid var(--border-color);
   background-color: var(--bg-background);
+  
 }
 
 .desktopNavVisible {
@@ -29,6 +37,7 @@
   align-items: center;
   gap: 4rem;
   padding: 2rem;
+  
 }
 
 .desktopNavFooter {

@@ -43,7 +43,6 @@ export default function DashboardLayout({
         <div className="flex flex-col sm:gap-0 sm:py-0 sm:pl-14">
           <header className={`${styles.header} sm:${styles.headerStatic}`}>
             <MobileNav />
-
           </header>
           <main className={styles.mainContent}>
             {children}
@@ -59,9 +58,7 @@ function DesktopNav() {
   return (
     <aside className={`${styles.desktopNav} sm:${styles.desktopNavVisible}`}>
       <nav className={styles.desktopNavItems}>
-        <a
-          href="https://vercel.com/templates/next.js/admin-dashboard-tailwind-postgres-react-nextjs"
-          className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+        <a href="/" className={styles.desktopNavLogo}
         >
           <VercelLogo className="h-3 w-3 transition-all group-hover:scale-110" />
           <span className="sr-only">Acme Inc</span>
