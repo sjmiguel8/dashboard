@@ -68,10 +68,10 @@
 
 @layer base {
   * {
-    @apply border-border;
+    background-color: #ffffff;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: #ffffff;
   }
 }
 
