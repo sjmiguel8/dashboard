@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '../ui/dropdown-menu.tsx';
+import styles from './User.module.css';
 
 type UserProps = {
   user?: {
@@ -33,14 +34,14 @@ export function User({ user }: UserProps) {
         <Button
           variant="outline"
           size="icon"
-          className="overflow-hidden rounded-full"
+          className={`${styles.overflowHidden} ${styles.roundedFull}`}
         >
           <img
             src={user?.image ?? '/placeholder-user.jpg'}
             width={36}
             height={36}
             alt="Avatar"
-            className="overflow-hidden rounded-full"
+            className={`${styles.overflowHidden} ${styles.roundedFull}`}
           />
         </Button>
       </DropdownMenuTrigger>
@@ -51,8 +52,8 @@ export function User({ user }: UserProps) {
           <a href="/settings">Settings</a>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <form onSubmit={handleSignOut} className="w-full">
-            <button type="submit" className="w-full text-left">Sign Out</button>
+          <form onSubmit={handleSignOut} className={styles.fullWidth}>
+            <button type="submit" className={`${styles.fullWidth} ${styles.textLeft}`}>Sign Out</button>
           </form>
         </DropdownMenuItem>
         {!user && (

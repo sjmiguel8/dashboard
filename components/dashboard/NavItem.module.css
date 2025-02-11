@@ -1,0 +1,35 @@
+.flexCenter {
+  display: flex;
+  height: 9rem;
+  width: 9rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  color: var(--text-muted-foreground);
+  transition: color 0.3s;
+}
+
+.flexCenter:hover {
+  color: var(--text-foreground);
+}
+
+.mdSize {
+  height: 8rem;
+  width: 8rem;
+}
+
+.bgAccent {
+  background-color: var(--bg-accent);
+  color: black;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

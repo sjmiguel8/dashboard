@@ -1,0 +1,33 @@
+.relativeForm {
+  position: relative;
+  margin-left: auto;
+  flex: 1;
+}
+
+.mdGrow {
+  flex-grow: 0;
+}
+
+.icon {
+  position: absolute;
+  left: 2.5rem;
+  top: 0.75rem;
+  height: 4rem;
+  width: 4rem;
+  color: var(--text-muted-foreground);
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--bg-background);
+  padding-left: 8rem;
+}
+
+.mdWidth {
+  width: 200px;
+}
+
+.lgWidth {
+  width: 336px;
+}

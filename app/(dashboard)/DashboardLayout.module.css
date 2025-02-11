@@ -1,0 +1,82 @@
+.mainContainer {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  background-color: var(--bg-muted-40);
+}
+
+.desktopNav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  width: 14rem;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+  background-color: var(--bg-background);
+}
+
+.desktopNavVisible {
+  display: flex;
+}
+
+.desktopNavItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding: 2rem;
+}
+
+.desktopNavFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding: 2rem;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  height: 0rem;
+  align-items: center;
+  gap: 4rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-background);
+  padding: 0rem;
+}
+
+.headerStatic {
+  position: static;
+  height: auto;
+  border: 0;
+  background-color: transparent;
+  padding: 6rem;
+}
+
+.mainContent {
+  display: grid;
+  flex: 1;
+  align-items: start;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: var(--bg-muted-40);
+}
+
+.breadcrumb {
+  display: none;
+}
+
+.breadcrumbVisible {
+  display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}

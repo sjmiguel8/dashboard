@@ -23,11 +23,13 @@ import {
   TooltipTrigger
 } from '@/components/ui/tooltip.tsx';
 import { Analytics } from '@vercel/analytics/react';
+import styles from './DashboardLayout.module.css';
 import { AuthUser } from '@/components/dashboard/auth-user.tsx';
 import { VercelLogo } from '@/components/icons.tsx';
 import Providers from '@/components/dashboard/providers.tsx';
 import { NavItem } from '@/components/dashboard/nav-item.tsx';
 import { SearchInput } from '@/components/dashboard/search.tsx';
+import '../../app/globals.css';
 
 export default function DashboardLayout({
   children
@@ -36,16 +38,14 @@ export default function DashboardLayout({
 }) {
   return (
     <Providers>
-      <main className="flex min-h-screen w-full flex-col bg-muted/40">
+      <main className={styles.mainContainer}>
         <DesktopNav />
-        <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-          <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+        <div className="flex flex-col sm:gap-0 sm:py-0 sm:pl-14">
+          <header className={`${styles.header} sm:${styles.headerStatic}`}>
             <MobileNav />
-            <DashboardBreadcrumb />
-            <SearchInput />
-            <AuthUser />
+
           </header>
-          <main className="grid flex-1 items-start gap-2 p-4 sm:px-6 sm:py-0 md:gap-4 bg-muted/40">
+          <main className={styles.mainContent}>
             {children}
           </main>
         </div>
@@ -57,8 +57,8 @@ export default function DashboardLayout({
 
 function DesktopNav() {
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
-      <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+    <aside className={`${styles.desktopNav} sm:${styles.desktopNavVisible}`}>
+      <nav className={styles.desktopNavItems}>
         <a
           href="https://vercel.com/templates/next.js/admin-dashboard-tailwind-postgres-react-nextjs"
           className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
@@ -87,7 +87,7 @@ function DesktopNav() {
           <LineChart className="h-5 w-5" />
         </NavItem>
       </nav>
-      <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+      <nav className={styles.desktopNavFooter}>
         <Tooltip>
           <TooltipTrigger asChild>
             <NavItem href="/settings" label="Settings">
@@ -105,12 +105,12 @@ function MobileNav() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button size="icon" variant="outline" className="sm:hidden">
+        <Button size="icon" variant="outline" className={styles.breadcrumb}>
           <PanelLeft className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="sm:max-w-xs">
+      <SheetContent side="left" className={styles.breadcrumbVisible}>
         <nav className="grid gap-6 text-lg font-medium">
           <a
             href="/"
@@ -162,7 +162,7 @@ function MobileNav() {
 
 function DashboardBreadcrumb() {
   return (
-    <Breadcrumb className="hidden md:flex">
+    <Breadcrumb className={styles.breadcrumbVisible}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>

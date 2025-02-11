@@ -1,0 +1,15 @@
+.overflowHidden {
+  overflow: hidden;
+}
+
+.roundedFull {
+  border-radius: 50%;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.textLeft {
+  text-align: left;
+}
