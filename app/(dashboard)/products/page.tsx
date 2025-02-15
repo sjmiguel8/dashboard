@@ -7,7 +7,7 @@ export default async function ProductsPage() {
   
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-3xl font-bold">Products</h1>
+      <h1 className="text-3xl font-bold">Pet Products</h1>
       <ProductsTable 
         products={products}
         offset={newOffset ?? 0}

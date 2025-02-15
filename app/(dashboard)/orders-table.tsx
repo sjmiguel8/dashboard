@@ -21,23 +21,23 @@ const sampleOrders: Order[] = [
   {
     id: 1,
     customerName: "John Smith",
-    product: "Smartphone X Pro",
+    product: "Premium Dog Bed Deluxe",
     status: "completed",
-    total: "$999.00",
+    total: "$199.00",
     date: "2024-02-07"
   },
   {
     id: 2,
     customerName: "Emma Wilson",
-    product: "Wireless Earbuds Ultra",
+    product: "Smart Pet Camera",
     status: "processing",
-    total: "$199.00",
+    total: "$129.00",
     date: "2024-02-07"
   },
   {
     id: 3,
     customerName: "Michael Brown",
-    product: "Smart Home Hub",
+    product: "Automatic Pet Feeder Pro",
     status: "pending",
     total: "$149.00",
     date: "2024-02-07"

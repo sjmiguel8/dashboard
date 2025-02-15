@@ -10,13 +10,13 @@ export default async function DashboardPage() {
   
   const stats = [
     {
-      title: "Total Products",
+      title: "Total Pet Products",
       value: products.length,
       icon: Package,
-      description: "Active products in inventory"
+      description: "Active pet products in inventory"
     },
     {
-      title: "Total Orders",
+      title: "Total Pet Orders",
       value: "25",
       icon: ShoppingCart,
       description: "Orders this month"
@@ -65,7 +65,7 @@ export default async function DashboardPage() {
       {/* Recent Products */}
       <Card>
         <CardHeader>
-          <CardTitle>Recent Products</CardTitle>
+          <CardTitle>Recent Pet Products</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
@@ -90,7 +90,7 @@ export default async function DashboardPage() {
       {/* Recent Orders */}
       <Card>
         <CardHeader>
-          <CardTitle>Recent Orders</CardTitle>
+          <CardTitle>Recent Pet Orders</CardTitle>
         </CardHeader>
         <CardContent>
           <OrdersTable />
