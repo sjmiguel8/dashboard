@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {
   Home,
   LineChart,
@@ -79,13 +78,13 @@ function MobileNav() {
       </SheetTrigger>
       <SheetContent side="left" className="w-[300px] p-0">
         <div className="border-b p-4">
-          <Link
+          <a
             href="/dashboard"
             className="flex items-center gap-2 font-semibold"
           >
             <VercelLogo className="h-5 w-5" />
             <span>Acme Inc</span>
-          </Link>
+          </a>
         </div>
         <nav className="grid gap-1 p-2">
           <NavLinks />
@@ -99,40 +98,40 @@ function NavLinks() {
   return (
     <>
       <Button variant="ghost" asChild className="w-full justify-start hover:bg-accent transition-colors">
-        <Link href="/dashboard" className="flex items-center gap-2 font-medium">
+        <a href="/dashboard" className="flex items-center gap-2 font-medium">
           <Home className="h-4 w-4" />
           Dashboard
-        </Link>
+        </a>
       </Button>
       <Button variant="ghost" asChild className="w-full justify-start hover:bg-accent transition-colors">
-        <Link href="/orders" className="flex items-center gap-2 font-medium">
+        <a href="/orders" className="flex items-center gap-2 font-medium">
           <ShoppingCart className="h-4 w-4" />
           Pet Orders
-        </Link>
+        </a>
       </Button>
       <Button variant="ghost" asChild className="w-full justify-start hover:bg-accent transition-colors">
-        <Link href="/products" className="flex items-center gap-2 font-medium">
+        <a href="/products" className="flex items-center gap-2 font-medium">
           <Package className="h-4 w-4" />
           Pet Products
-        </Link>
+        </a>
       </Button>
       <Button variant="ghost" asChild className="w-full justify-start hover:bg-accent transition-colors">
-        <Link href="/customers" className="flex items-center gap-2 font-medium">
+        <a href="/customers" className="flex items-center gap-2 font-medium">
           <Users2 className="h-4 w-4" />
           Customers
-        </Link>
+        </a>
       </Button>
       <Button variant="ghost" asChild className="w-full justify-start hover:bg-accent transition-colors">
-        <Link href="/analytics" className="flex items-center gap-2 font-medium">
+        <a href="/analytics" className="flex items-center gap-2 font-medium">
           <LineChart className="h-4 w-4" />
           Analytics
-        </Link>
+        </a>
       </Button>
       <Button variant="ghost" asChild className="w-full justify-start hover:bg-accent transition-colors">
-        <Link href="/settings" className="flex items-center gap-2 font-medium">
+        <a href="/settings" className="flex items-center gap-2 font-medium">
           <Settings className="h-4 w-4" />
           Settings
-        </Link>
+        </a>
       </Button>
     </>
   );
@@ -144,7 +143,7 @@ function DashboardBreadcrumb() {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/dashboard">Dashboard</Link>
+            <a href="/dashboard">Dashboard</a>
           </BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>
