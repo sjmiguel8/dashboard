@@ -1,6 +1,5 @@
 import { auth } from "@/lib/auth.ts";
 import styles from "./DashboardLayout.module.css";
-import Link from "next/link";
 import { NavItem } from "@/components/dashboard/nav-item.tsx";
 import { User } from "@/components/dashboard/user.tsx";
 import { SearchInput } from "@/components/dashboard/search.tsx";
@@ -45,9 +44,9 @@ export default async function DashboardLayout({
     <div className={styles.mainContainer}>
       <nav className={`${styles.desktopNav} ${styles.desktopNavVisible}`}>
         <div className={styles.navHeader}>
-          <Link href="/dashboard" className={styles.logo}>
+          <a href="/dashboard" className={styles.logo}>
             PetShop
-          </Link>
+          </a>
           <div className={styles.searchContainer}>
             <input type="text" className={styles.searchInput} placeholder="Search..." />
           </div>
