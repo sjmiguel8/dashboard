@@ -47,20 +47,7 @@ export default function RootLayout({
             <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-sm border-b shadow-sm transition-all">
               <div className="max-w-[2000px] mx-auto">
                 <div className="flex h-16 items-center justify-between px-4 md:px-6">
-                  <div className="flex items-center gap-6">
-                    <MobileNav />
-                    <Link
-                      href="/dashboard"
-                      className="flex items-center gap-2 font-semibold text-xl"
-                    >
-                      <VercelLogo className="h-5 w-5" />
-                      <span className="hidden md:inline-block">Acme Inc</span>
-                    </Link>
-                    <nav className="hidden md:flex items-center gap-1">
-                      <NavLinks />
-                    </nav>
-                  </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
                     <SearchInput />
                     <User />
                   </div>

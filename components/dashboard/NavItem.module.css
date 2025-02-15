@@ -1,35 +1,45 @@
-.flexCenter {
+.link {
   display: flex;
-  height: 9rem;
-  width: 9rem;
+  width: 100%;
   align-items: center;
-  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--muted-text);
+  text-decoration: none;
   border-radius: 0.5rem;
-  color: var(--text-muted-foreground);
-  transition: color 0.3s;
+  transition: all 0.2s ease;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-.flexCenter:hover {
-  color: var(--text-foreground);
+.link:hover {
+  color: var(--primary);
+  background-color: var(--primary-light);
 }
 
-.mdSize {
-  height: 8rem;
-  width: 8rem;
+.active {
+  color: var(--primary);
+  background-color: var(--primary-light);
+  font-weight: 600;
 }
 
-.bgAccent {
-  background-color: var(--bg-accent);
-  color: black;
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
 }
 
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+.link:hover .icon,
+.active .icon {
+  opacity: 1;
+}
+
+.title {
+  flex: 1;
+  white-space: nowrap;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  text-overflow: ellipsis;
 }

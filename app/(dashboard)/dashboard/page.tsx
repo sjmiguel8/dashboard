@@ -1,101 +1,88 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card.tsx";
 import { Package, ShoppingCart, Users2, TrendingUp } from "lucide-react";
 import { getProducts } from "@/lib/db.ts";
-import { OrdersTable } from "app/(dashboard)/orders-table.tsx";
-import '../DashboardLayout.module.css';
-import '/app/globals.css';
+import styles from "./Dashboard.module.css";
 
 export default async function DashboardPage() {
   const { products } = await getProducts("", 0);
   
   const stats = [
     {
-      title: "Total Pet Products",
+      title: "Total Products",
       value: products.length,
       icon: Package,
-      description: "Active pet products in inventory"
+      description: "Active products in inventory",
+      color: "purple"
     },
     {
-      title: "Total Pet Orders",
+      title: "Orders",
       value: "25",
       icon: ShoppingCart,
-      description: "Orders this month"
+      description: "Orders this month",
+      color: "blue"
     },
     {
-      title: "Active Customers",
+      title: "Customers",
       value: "120",
       icon: Users2,
-      description: "Customers this month"
+      description: "Active customers",
+      color: "green"
     },
     {
       title: "Revenue",
       value: "$12,234",
       icon: TrendingUp,
-      description: "Revenue this month"
+      description: "Revenue this month",
+      color: "orange"
     }
   ];
 
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-3xl font-bold">Dashboard</h1>
+    <div className={styles.dashboardContainer}>
+      <h1 className={styles.pageTitle}>Dashboard Overview</h1>
       
-      {/* Stats Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className={styles.statsGrid}>
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-            <Card key={stat.title}>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  {stat.title}
-                </CardTitle>
-                <Icon className="h-4 w-4 text-muted-foreground" />
+            <Card key={stat.title} className={styles.statCard}>
+              <CardHeader className={styles.statHeader}>
+                <div className={`${styles.statIconWrapper} ${styles[stat.color]}`}>
+                  <Icon className={styles.statIcon} />
+                </div>
+                <CardTitle className={styles.statTitle}>{stat.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stat.value}</div>
-                <p className="text-xs text-muted-foreground">
-                  {stat.description}
-                </p>
+                <div className={styles.statValue}>{stat.value}</div>
+                <p className={styles.statDescription}>{stat.description}</p>
               </CardContent>
             </Card>
           );
         })}
       </div>
 
-      {/* Recent Products */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Recent Pet Products</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2">
-            {products.slice(0, 3).map(product => (
-              <div key={product.id} className="flex items-center justify-between border-b py-2 last:border-0">
-                <div>
-                  <div className="font-medium">{product.name}</div>
-                  <div className="text-sm text-muted-foreground">${Number(product.price).toFixed(2)}</div>
+      <div className={styles.contentGrid}>
+        <Card className={styles.recentProducts}>
+          <CardHeader>
+            <CardTitle>Recent Products</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className={styles.productsList}>
+              {products.slice(0, 5).map((product) => (
+                <div key={product.id} className={styles.productItem}>
+                  <div className={styles.productInfo}>
+                    <div className={styles.productName}>{product.name}</div>
+                    <div className={styles.productPrice}>{product.price}</div>
+                  </div>
+                  <div className={`${styles.productStatus} ${styles[product.status]}`}>
+                    {product.status}
+                  </div>
                 </div>
-                <div className={`px-2.5 py-0.5 rounded-full text-xs font-medium capitalize 
-                  ${product.status === 'active' ? 'bg-green-100 text-green-800' : 
-                    product.status === 'inactive' ? 'bg-yellow-100 text-yellow-800' : 
-                    'bg-red-100 text-red-800'}`}>
-                  {product.status}
-                </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Recent Orders */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Recent Pet Orders</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <OrdersTable />
-        </CardContent>
-      </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

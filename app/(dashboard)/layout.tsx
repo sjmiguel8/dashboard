@@ -1,172 +1,74 @@
+import { auth } from "@/lib/auth.ts";
+import styles from "./DashboardLayout.module.css";
+import Link from "next/link";
+import { NavItem } from "@/components/dashboard/nav-item.tsx";
+import { User } from "@/components/dashboard/user.tsx";
+import { SearchInput } from "@/components/dashboard/search.tsx";
 import {
-  Home,
-  LineChart,
   Package,
-  Package2,
-  PanelLeft,
-  Settings,
   ShoppingCart,
-  Users2
-} from 'lucide-react';
+  Users2,
+  LayoutDashboard,
+} from "lucide-react";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-} from '@/components/ui/breadcrumb.tsx';
-import { Button } from '@/components/ui/button.tsx';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet.tsx';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from '@/components/ui/tooltip.tsx';
-import { Analytics } from '@vercel/analytics/react';
-import styles from './DashboardLayout.module.css';
-import { AuthUser } from '@/components/dashboard/auth-user.tsx';
-import { VercelLogo } from '@/components/icons.tsx';
-import Providers from '@/components/dashboard/providers.tsx';
-import { NavItem } from '@/components/dashboard/nav-item.tsx';
-import { SearchInput } from '@/components/dashboard/search.tsx';
-import '../../app/globals.css';
+const navItems = [
+  {
+    title: "Dashboard",
+    href: "/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    title: "Products",
+    href: "/products",
+    icon: Package,
+  },
+  {
+    title: "Orders",
+    href: "/orders",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Customers",
+    href: "/customers",
+    icon: Users2,
+  },
+];
 
-export default function DashboardLayout({
-  children
+export default async function DashboardLayout({
+  children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await auth();
+
   return (
-    <Providers>
-      <main className={styles.mainContainer}>
-        <DesktopNav />
-        <div className="flex flex-col sm:gap-0 sm:py-0 sm:pl-14">
-          <header className={`${styles.header} sm:${styles.headerStatic}`}>
-            <MobileNav />
-          </header>
-          <main className={styles.mainContent}>
-            {children}
-          </main>
+    <div className={styles.mainContainer}>
+      <nav className={`${styles.desktopNav} ${styles.desktopNavVisible}`}>
+        <div className={styles.navHeader}>
+          <Link href="/dashboard" className={styles.logo}>
+            PetShop
+          </Link>
+          <div className={styles.searchContainer}>
+            <input type="text" className={styles.searchInput} placeholder="Search..." />
+          </div>
         </div>
-        <Analytics />
-      </main>
-    </Providers>
-  );
-}
-
-function DesktopNav() {
-  return (
-    <aside className={`${styles.desktopNav} sm:${styles.desktopNavVisible}`}>
-      <nav className={styles.desktopNavItems}>
-        <a href="/" className={styles.desktopNavLogo}
-        >
-          <VercelLogo className="h-3 w-3 transition-all group-hover:scale-110" />
-          <span className="sr-only">Acme Inc</span>
-        </a>
-
-        <NavItem href="/dashboard" label="Dashboard">
-          <Home className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/orders" label="Orders">
-          <ShoppingCart className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/products" label="Products">
-          <Package className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/customers" label="Customers">
-          <Users2 className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/analytics" label="Analytics">
-          <LineChart className="h-5 w-5" />
-        </NavItem>
-      </nav>
-      <nav className={styles.desktopNavFooter}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <NavItem href="/settings" label="Settings">
-              <Settings className="h-5 w-5" />
+        <div className={styles.desktopNavItems}>
+          {navItems.map((item) => (
+            <NavItem key={item.href} href={item.href} label={item.title}>
+              <item.icon />
             </NavItem>
-          </TooltipTrigger>
-          <TooltipContent side="right">Settings</TooltipContent>
-        </Tooltip>
+          ))}
+        </div>
+        <div className={styles.desktopNavFooter}>
+          {session?.user && <User user={session.user} />}
+        </div>
       </nav>
-    </aside>
-  );
-}
 
-function MobileNav() {
-  return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button size="icon" variant="outline" className={styles.breadcrumb}>
-          <PanelLeft className="h-5 w-5" />
-          <span className="sr-only">Toggle Menu</span>
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="left" className={styles.breadcrumbVisible}>
-        <nav className="grid gap-6 text-lg font-medium">
-          <a
-            href="/"
-            className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
-          >
-            <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
-            <span className="sr-only">Vercel</span>
-          </a>
-          <a
-            href="/dashboard"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <Home className="h-5 w-5" />
-            Dashboard
-          </a>
-          <a
-            href="/orders"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            Orders
-          </a>
-          <a
-            href="/products"
-            className="flex items-center gap-4 px-2.5 text-foreground"
-          >
-            <Package className="h-5 w-5" />
-            Products
-          </a>
-          <a
-            href="/customers"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <Users2 className="h-5 w-5" />
-            Customers
-          </a>
-          <a
-            href="/analytics"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <LineChart className="h-5 w-5" />
-            Analytics
-          </a>
-        </nav>
-      </SheetContent>
-    </Sheet>
-  );
-}
-
-function DashboardBreadcrumb() {
-  return (
-    <Breadcrumb className={styles.breadcrumbVisible}>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <a href="/dashboard">Dashboard</a>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
+      <main className={styles.mainWrapper}>
+        <div className={styles.mainContent}>
+          {children}
+        </div>
+      </main>
+    </div>
   );
 }

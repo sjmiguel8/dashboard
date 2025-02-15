@@ -1,15 +1,48 @@
-.overflowHidden {
-  overflow: hidden;
+.userContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.roundedFull {
+.userContainer:hover {
+  background-color: var(--primary-light);
+}
+
+.userImage {
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
+  border: 2px solid var(--border-color);
 }
 
-.fullWidth {
-  width: 100%;
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.textLeft {
-  text-align: left;
+.userName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-foreground);
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: var(--muted-text);
+}
+
+.signOutButton {
+  margin-left: auto;
+  padding: 0.5rem;
+  color: var(--muted-text);
+  transition: color 0.2s ease;
+}
+
+.signOutButton:hover {
+  color: var(--primary);
 }

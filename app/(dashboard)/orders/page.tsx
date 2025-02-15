@@ -1,11 +1,20 @@
-import React from "react";
-import { OrdersTable } from "../orders-table.tsx";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.tsx";
+import { OrdersTable } from "@/components/dashboard/orders-table.tsx";
+import styles from "./Orders.module.css";
 
 export default function OrdersPage() {
   return (
-    <div className="flex flex-col gap-4">
-      <h1 className="text-3xl font-bold">Orders</h1>
-      <OrdersTable />
+    <div className={styles.pageContainer}>
+      <h1 className={styles.pageTitle}>Orders</h1>
+
+      <Card className={styles.ordersCard}>
+        <CardHeader>
+          <CardTitle>Recent Orders</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <OrdersTable />
+        </CardContent>
+      </Card>
     </div>
   );
 }
